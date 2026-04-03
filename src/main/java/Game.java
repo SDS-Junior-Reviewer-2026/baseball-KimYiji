@@ -2,14 +2,6 @@ public class Game {
 
     public String question;
 
-    private boolean isSolved(String guessNumber) {
-        return guessNumber.equals(question);
-    }
-
-    private static GuessResult getGuessResult() {
-        return new GuessResult(true, 3, 0);
-    }
-
     public GuessResult guess(String guessNumber) {
         assertIllegalArgument(guessNumber);
         if (isSolved(guessNumber)) {
@@ -17,6 +9,14 @@ public class Game {
         }else{
             return createUnSolvedResult(guessNumber);
         }
+    }
+
+    private boolean isSolved(String guessNumber) {
+        return guessNumber.equals(question);
+    }
+
+    private static GuessResult getGuessResult() {
+        return new GuessResult(true, 3, 0);
     }
 
     private GuessResult createUnSolvedResult(String guessNumber) {
