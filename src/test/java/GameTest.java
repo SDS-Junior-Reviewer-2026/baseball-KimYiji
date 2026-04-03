@@ -39,23 +39,28 @@ public class GameTest {
 
     @Test
     void returnSolvedResultMatchedNumber() {
-        game.question = "123";
+        generateQuestion("123");
         GuessResult result = game.guess("123");
 
-        assertThat(result).isNotNull();
-        assertThat(result.isSolved()).isEqualTo(true);
-        assertThat(result.getStrikes()).isEqualTo(3);
-        assertThat(result.getBalls()).isEqualTo(0);
+        assertMatchedNumber(result, true, 3, 0);
+    }
+
+    private void generateQuestion(String questionNumber) {
+        game.question = questionNumber;
     }
 
     @Test
     void returnSolvedResultIfUnmatchedNumber() {
-        game.question = "123";
+        generateQuestion("123");
         GuessResult result = game.guess("456");
 
+        assertMatchedNumber(result, false, 0, 0);
+    }
+
+    private static void assertMatchedNumber(GuessResult result, boolean solved, int strikes, int balls) {
         assertThat(result).isNotNull();
-        assertThat(result.isSolved()).isEqualTo(false);
-        assertThat(result.getStrikes()).isEqualTo(0);
-        assertThat(result.getBalls()).isEqualTo(0);
+        assertThat(result.isSolved()).isEqualTo(solved);
+        assertThat(result.getStrikes()).isEqualTo(strikes);
+        assertThat(result.getBalls()).isEqualTo(balls);
     }
 }
