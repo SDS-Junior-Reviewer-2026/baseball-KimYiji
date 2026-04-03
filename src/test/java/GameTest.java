@@ -26,7 +26,10 @@ public class GameTest {
 
     @Test
     void throwExceptionWhenInputLengthIsUnmatched() {
-        String guessNumber = "12";
+        assertIllegalArgument("12");
+    }
+
+    private void assertIllegalArgument(String guessNumber) {
         try {
             game.guess(guessNumber);
             fail();
