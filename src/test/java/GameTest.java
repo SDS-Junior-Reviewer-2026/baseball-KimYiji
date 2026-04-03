@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
@@ -25,11 +26,11 @@ public class GameTest {
 
     @Test
     void throwExceptionWhenInputLengthIsUnmatched() {
-        try{
-            game.guess("12");
+        String guessNumber = "12";
+        try {
+            game.guess(guessNumber);
             fail();
-        }
-        catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
 
         }
     }
