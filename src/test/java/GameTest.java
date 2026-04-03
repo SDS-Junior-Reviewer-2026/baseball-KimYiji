@@ -19,9 +19,7 @@ public class GameTest {
 
     @Test
     void throwExceptionWhenInputIsNull() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            game.guess(null);
-        });
+        assertIllegalArgument(null);
     }
 
     @Test
