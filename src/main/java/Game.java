@@ -6,10 +6,14 @@ public class Game {
         return guessNumber.equals(question);
     }
 
+    private static GuessResult getGuessResult() {
+        return new GuessResult(true, 3, 0);
+    }
+
     public GuessResult guess(String guessNumber) {
         assertIllegalArgument(guessNumber);
         if (isSolved(guessNumber)) {
-            return new GuessResult(true, 3, 0);
+            return getGuessResult();
         }else{
             int strikes = 0;
             int balls = 0;
