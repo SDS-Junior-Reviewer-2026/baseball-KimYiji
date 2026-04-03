@@ -46,7 +46,16 @@ public class GameTest {
         assertThat(result.isSolved()).isEqualTo(true);
         assertThat(result.getStrikes()).isEqualTo(3);
         assertThat(result.getBalls()).isEqualTo(0);
+    }
 
+    @Test
+    void returnSolvedResultIfUnmatchedNumber() {
+        game.question = "123";
+        GuessResult result = game.guess("456");
 
+        assertThat(result).isNotNull();
+        assertThat(result.isSolved()).isEqualTo(false);
+        assertThat(result.getStrikes()).isEqualTo(0);
+        assertThat(result.getBalls()).isEqualTo(0);
     }
 }
