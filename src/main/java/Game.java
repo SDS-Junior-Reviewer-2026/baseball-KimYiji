@@ -15,18 +15,22 @@ public class Game {
         if (isSolved(guessNumber)) {
             return getGuessResult();
         }else{
-            int strikes = 0;
-            int balls = 0;
-            for (int i = 0; i < question.length(); i++) {
-                if (question.indexOf(guessNumber.charAt(i)) == i){
-                    strikes++;
-                }
-                else if(question.indexOf(guessNumber.charAt(i)) > -1){
-                    balls++;
-                }
-            }
-            return new GuessResult(false, strikes, balls);
+            return createUnSolvedResult(guessNumber);
         }
+    }
+
+    private GuessResult createUnSolvedResult(String guessNumber) {
+        int strikes = 0;
+        int balls = 0;
+        for (int i = 0; i < question.length(); i++) {
+            if (question.indexOf(guessNumber.charAt(i)) == i){
+                strikes++;
+            }
+            else if(question.indexOf(guessNumber.charAt(i)) > -1){
+                balls++;
+            }
+        }
+        return new GuessResult(false, strikes, balls);
     }
 
     private static void assertIllegalArgument(String guessNumber) {
